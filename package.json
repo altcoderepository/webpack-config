@@ -1,6 +1,6 @@
 {
   "name": "@alt-code/webpack-config",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Базовая конфигурация Webpack для React",
   "main": "./webpack.config.js",
   "scripts": {
