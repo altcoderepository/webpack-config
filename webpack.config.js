@@ -2,27 +2,32 @@ const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
+const rootDir = process.cwd();
+const srcDir = './src';
+const publicDir = './public';
+const outputDir = './build';
+
 const isDev = process.env.NODE_ENV === 'development';
 
 const getFileName = (ext) => `bundle.[fullhash].${ext}`;
 
 module.exports = {
-  context: path.resolve(__dirname, 'src'),
-  entry: 'index.tsx',
+  context: path.resolve(rootDir, srcDir),
+  entry: './index.tsx',
   output: {
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(rootDir, outputDir),
     filename: getFileName('js'),
   },
   resolve: {
-    modules: [path.join(__dirname, 'src'), 'node_modules'],
+    modules: [path.join(__dirname, '/src'), 'node_modules'],
     alias: {
-      '@components': path.resolve(__dirname, 'src/components/'),
-      '@pages': path.resolve(__dirname, 'src/pages/'),
-      '@styles': path.resolve(__dirname, 'src/styles/'),
-      '@api': path.resolve(__dirname, 'src/api/'),
-      '@store': path.resolve(__dirname, 'src/store/'),
-      '@utils': path.resolve(__dirname, 'src/utils/'),
-      '@helpers': path.resolve(__dirname, 'src/helpers/'),
+      '@components': path.resolve(__dirname, '/src/components/'),
+      '@pages': path.resolve(__dirname, '/src/pages/'),
+      '@styles': path.resolve(__dirname, '/src/styles/'),
+      '@api': path.resolve(__dirname, '/src/api/'),
+      '@store': path.resolve(__dirname, '/src/store/'),
+      '@utils': path.resolve(__dirname, '/src/utils/'),
+      '@helpers': path.resolve(__dirname, '/src/helpers/'),
     },
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
@@ -47,7 +52,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebPackPlugin({
-      template: path.resolve(__dirname, 'public', 'index.html'),
+      template: path.resolve(rootDir, publicDir, 'index.html'),
       minify: {
         collapseWhitespace: !isDev,
       },
@@ -56,7 +61,7 @@ module.exports = {
   devServer: {
     port: 3000,
     static: {
-      directory: path.resolve(__dirname, 'public'),
+      directory: path.resolve(rootDir, publicDir),
     },
     historyApiFallback: true,
   },
