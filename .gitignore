@@ -1,0 +1,17 @@
+node_modules
+
+/build
+/coverage
+*.map
+.eslintcache
+.stylelintcache
+
+.cache
+.idea
+.vscode
+.history
+
+/*.log*
+.DS_Store
+.env
+.npmrc
