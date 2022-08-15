@@ -43,5 +43,4 @@
   "include": [
     "src"
   ],
-  "extends": "./alias.json"
 }
